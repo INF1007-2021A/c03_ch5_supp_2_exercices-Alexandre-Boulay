@@ -4,15 +4,36 @@
 import math
 
 def get_num_letters(text):
-	return 0
+	num=0
+	for char in text:
+		if char.isalnum():
+			num+=1
+		else:
+			continue
+	return(num)
 
 def get_word_length_histogram(text):
-	return [0]
+	histo = [0]
+	for word in text.split():
+		length= get_num_letters(word)
+
+		if length>= len(histo):
+			histo+=[0] * (length-len(histo)+1)
+		if length!=0:
+			histo[length]+=1
+		elif length==0:
+			continue
+
+
+
+	return (histo)
 
 def format_histogram(histogram):
-	ROW_CHAR = "*"
-
-	return ""
+	for i in range(len(histogram)):
+		if i == 0:
+			continue
+		else:
+			print(i, "*" * (histogram[i]))
 
 def format_horizontal_histogram(histogram):
 	BLOCK_CHAR = "|"
